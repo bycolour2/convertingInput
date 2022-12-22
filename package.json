@@ -1,5 +1,6 @@
 {
   "name": "vite-react-ts-eslint-prettier",
+  "homepage": "https://bycolour2.github.io/convertingInput",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -10,9 +11,12 @@
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
-    "format": "npm run prettier:fix && npm run lint:fix"
+    "format": "npm run prettier:fix && npm run lint:fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
