@@ -1,7 +1,7 @@
-import Hello from '~/components/Hello';
+import { ConvertingInput } from '~/components/ConvertingInput';
 
 function App() {
-  return <Hello />;
+  return <ConvertingInput />;
 }
 
 export default App;
