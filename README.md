@@ -110,6 +110,10 @@ module.exports = {
 
 #### **prettier-plugin-tailwindcss**
 
+npm install -D prettier prettier-plugin-tailwindcss
+
+## add to tailwind config
+
 ```
 // prettier.config.js
 module.exports = {
@@ -122,8 +126,6 @@ module.exports = {
   ],
 }
 ```
-
-npm install -D prettier prettier-plugin-tailwindcss
 
 #### **line-сlamp**
 
