@@ -4,7 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/', // to gh-pages change to "/{repo}/" && use HashRouter instead of BrowserRouter
+  base: '/convertingInput/', // to gh-pages change to "/{repo}/" && use HashRouter instead of BrowserRouter
   plugins: [react(), tsconfigPaths()],
   server: {
     // open: true,
