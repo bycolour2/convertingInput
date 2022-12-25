@@ -1,7 +1,6 @@
 import { LengthUnits } from 'convert-units';
 import { useState } from 'react';
 import { ConvertingInput } from '~/components/ConvertingInput';
-import { ConvertingInput2 } from './components/ConvertingInput2';
 import { Result } from './components/Results';
 import { convert } from './utils/convert';
 
@@ -9,21 +8,17 @@ function App() {
   const [currentUnit, setCurrentUnit] = useState('m');
   const units = ['m', 'ft'];
   const baseUnit = 'm';
-  const [inputValue, setInputValue] = useState('');
+  const [outputValue, setOutputValue] = useState('');
 
   const converterFn = (from: string, to: string, value: string) => {
     const result = convert(+value)
       .from(from as LengthUnits)
-      .to(to as LengthUnits)
-      .toFixed(2)
-      .toString();
-    // console.log(result);
-    // console.log(parseFloat(result.toFixed(2)).toString());
-    return result;
+      .to(to as LengthUnits);
+    return parseFloat(result.toFixed(2)).toString();
   };
 
   const handleChange = (value: string) => {
-    setInputValue(value);
+    setOutputValue(value);
   };
 
   const systemToggle = () => {
@@ -34,24 +29,25 @@ function App() {
   return (
     <>
       <div className="flex h-[100vh] flex-col items-center justify-center bg-purple-300">
-        <h1 className="pb-8 text-4xl font-bold">Speed converting input</h1>
-        <button type="button" onClick={systemToggle}>
-          {currentUnit}
+        <h1 className="w-3/4 pb-8 text-center text-4xl font-bold lg:w-1/4">
+          Lenght metrical/imperial converting input
+        </h1>
+        <button
+          type="button"
+          onClick={systemToggle}
+          className="rounded-lg bg-blue-700 px-3.5 py-1.5 text-white hover:bg-blue-800"
+        >
+          {currentUnit !== baseUnit ? 'to Metrical' : 'to Imperial'}
         </button>
-        <ConvertingInput />
-        <Result
-          converterFn={converterFn}
-          inputValue={inputValue}
-          currentUnit={currentUnit}
-        />
-        <ConvertingInput2
+        <ConvertingInput
           units={units}
           baseUnit={baseUnit}
           currentUnit={currentUnit}
           converterFn={converterFn}
-          value={inputValue}
+          value={outputValue}
           onChange={handleChange}
         />
+        <Result outputValue={outputValue} currentUnit={currentUnit} />
       </div>
     </>
   );
